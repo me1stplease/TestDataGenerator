@@ -1,3 +1,6 @@
 datatype,columnName,property1,property2,property3,property4
-Phone,phone,,,,
-Name,phone,,,,
+Name,Name,First,,,
+Email,email,@yahoo.com, @hotmail.com,,,
+Amount,salary,0,999999,,
+Date,DOB,1914-07-07,2024-07-07,,
+Categorical,CD,A,B,C,,,
