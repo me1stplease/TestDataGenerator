@@ -183,24 +183,35 @@ with tab1:
                     categorical = ctg(fake, records, data[i][2])
                     output_record.append(categorical)
 
+            # print("out")
+            #
             f = open("input.csv", "w")
             f.write("datatype|columnName|property1|property2|property3|property4\n")
             f.close()
 
             # print("final_op:")
-            # print(output_record)
+            print(output_record)
             Tp_output = [['' for x in range(len(output_record))] for y in range(len(output_record[0]))]
 
             tps(output_record, Tp_output, len(output_record), len(output_record[0]))
 
             st.write(str(Tp_output))
 
-            myFile = open('output.csv', 'w')
+            myFile = open('outputTemp.csv', 'w')
             writer = csv.writer(myFile)
 
             for data_list in Tp_output:
                 writer.writerow(data_list)
             myFile.close()
+
+            with open("outputTemp.csv", 'r') as r, open('output.csv', 'w') as o:
+                for line in r:
+                    # strip() function
+                    if line.strip():
+                        o.write(line)
+
+            # f = open("output.txt", "r")
+            # print("New text file:\n", f.read())
 
     except:
         e = RuntimeError('Enter a valid number.')

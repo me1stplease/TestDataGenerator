@@ -47,10 +47,17 @@ def Amount(records, minN=0, maxN=9999999):
     return amount
 
 
-def Text(records, length=10):
+def Text(fake, records, length=10):
     txt = []
+    txtFormat = ''
+    print("IN:"+length)
+    for _ in length:
+        txtFormat += '?'
+
     for _ in range(records):
-        txt.append(FakerFactory.LazyAttribute(lambda n: fakeFact.sentence()[:length]))
+        print("IN")
+        txt.append(fake.bothify(text=txtFormat, letters='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+    print("OUT")
     return txt
 
 
