@@ -16,6 +16,7 @@ from DataGen import Address as addrs
 from DataGen import Date as dt
 from DataGen import Custom as cstm
 from DataGen import Categorical as ctg
+from exportModule import export
 
 global datatype
 global columnName
@@ -111,9 +112,7 @@ with tab1:
                 property3 = ''
                 property4 = ''
 
-    # col1, col2 = st.columns(2)
-    #
-    # with col1:
+
     if st.button("Add Attribute", type="primary"):
         f = open("input.csv", "a")
         f.write(
@@ -124,11 +123,19 @@ with tab1:
         df = pd.read_csv('input.csv', delimiter='|')
         st.table(df)
 
-    # with col2:
     if st.button("Clear All", type="secondary"):
         f = open("input.csv", "w")
         f.write("datatype|columnName|property1|property2|property3|property4\n")
         f.close()
+
+    exportFormat = st.radio(
+        "Output Format",
+        ["CSV", "EXCEL", "JSON", "TEXT"],
+        index=None,
+        horizontal=True,
+    )
+
+    st.write("You selected:", ":rainbow[" + exportFormat + "]")
 
     try:
         records = int(st.text_input('Number of records to be generated: ', '10'))
@@ -204,14 +211,7 @@ with tab1:
                 writer.writerow(data_list)
             myFile.close()
 
-            with open("outputTemp.csv", 'r') as r, open('output.csv', 'w') as o:
-                for line in r:
-                    # strip() function
-                    if line.strip():
-                        o.write(line)
-
-            # f = open("output.txt", "r")
-            # print("New text file:\n", f.read())
+            export(exportFormat)
 
     except:
         e = RuntimeError('Enter a valid number.')
