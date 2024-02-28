@@ -131,7 +131,7 @@ with tab1:
     exportFormat = st.radio(
         "Output Format",
         ["CSV", "EXCEL", "JSON", "TEXT"],
-        index=None,
+        index=1,
         horizontal=True,
     )
 
