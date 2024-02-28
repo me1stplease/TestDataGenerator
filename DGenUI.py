@@ -1,4 +1,5 @@
 import datetime
+from pathlib import Path
 
 import streamlit as st
 from faker import Faker
@@ -112,7 +113,6 @@ with tab1:
                 property3 = ''
                 property4 = ''
 
-
     if st.button("Add Attribute", type="primary"):
         f = open("input.csv", "a")
         f.write(
@@ -212,6 +212,36 @@ with tab1:
             myFile.close()
 
             export(exportFormat)
+
+            if exportFormat == "CSV":
+                st.download_button(
+                    "Download from file",
+                    data=Path("output.csv").read_text(),
+                    file_name="output.csv",
+                    mime="application/csv",
+                )
+            elif exportFormat == "EXCEL":
+                st.download_button(
+                    "Download from file",
+                    data=Path("output.xlsx").read_text(),
+                    file_name="output.xlsx",
+                    mime="application/xlsx",
+                )
+            elif exportFormat == "JSON":
+                f = open('output.json')
+                st.download_button(
+                    "Download from file",
+                    data=Path("output.json").read_text(),
+                    file_name="output.json",
+                    mime="application/json",
+                )
+            else:
+                st.download_button(
+                    "Download from file",
+                    data=Path("output.txt").read_text(),
+                    file_name="output.txt",
+                    mime="application/txt",
+                )
 
     except:
         e = RuntimeError('Enter a valid number.')

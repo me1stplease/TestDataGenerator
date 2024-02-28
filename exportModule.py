@@ -3,21 +3,21 @@ import json
 
 
 def export(fmt):
-    if fmt == 'csv':
+    if fmt == 'CSV':
         with open("outputTemp.csv", 'r') as r, open('output.csv', 'w') as o:
             for line in r:
                 # strip() function
                 if line.strip():
                     o.write(line)
 
-    if fmt == 'excel':
+    if fmt == 'EXCEL':
         with open("outputTemp.csv", 'r') as r, open('output.xlsx', 'w') as o:
             for line in r:
                 # strip() function
                 if line.strip():
                     o.write(line)
 
-    if fmt == 'json':
+    if fmt == 'JSON':
         with open("outputTemp.csv", 'r') as r, open('output.csv', 'w') as o:
             for line in r:
                 # strip() function
