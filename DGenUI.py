@@ -130,8 +130,8 @@ with tab1:
 
     exportFormat = st.radio(
         "Output Format",
-        ["CSV", "EXCEL", "JSON", "TEXT"],
-        index=1,
+        ["CSV", "JSON", "TEXT"],
+        index=0,
         horizontal=True,
     )
 
@@ -205,7 +205,7 @@ with tab1:
             st.write(str(Tp_output))
 
             myFile = open('outputTemp.csv', 'w')
-            writer = csv.writer(myFile)
+            writer = csv.writer(myFile, delimiter='|')
 
             for data_list in Tp_output:
                 writer.writerow(data_list)
@@ -220,13 +220,13 @@ with tab1:
                     file_name="output.csv",
                     mime="application/csv",
                 )
-            elif exportFormat == "EXCEL":
-                st.download_button(
-                    "Download from file",
-                    data=Path("output.xlsx").read_text(),
-                    file_name="output.xlsx",
-                    mime="application/xlsx",
-                )
+            # elif exportFormat == "EXCEL":
+            #     st.download_button(
+            #         "Download from file",
+            #         data=Path("output.xlsx").read_text(),
+            #         file_name="output.xlsx",
+            #         mime="application/xlsx",
+            #     )
             elif exportFormat == "JSON":
                 f = open('output.json')
                 st.download_button(

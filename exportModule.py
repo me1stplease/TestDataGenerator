@@ -10,18 +10,20 @@ def export(fmt):
                 # strip() function
                 if line.strip():
                     o.write(line)
-
-    if fmt == 'EXCEL':
-        with open("outputTemp.csv", 'r') as r, open('output.csv', 'w') as o:
-            for line in r:
-                # strip() function
-                if line.strip():
-                    o.write(line)
-
-        df_new = pd.read_csv('output.csv')
-        writer = pd.ExcelWriter('output.xlsx')
-        df_new.to_excel(writer, index=False)
-        writer.save()
+    #
+    # if fmt == 'EXCEL':
+    #     with open("outputTemp.csv", 'r') as r, open('output.csv', 'w') as o:
+    #         for line in r:
+    #             # strip() function
+    #             if line.strip():
+    #                 o.write(line)
+    #     print("IN")
+    #     cvsDataframe = pd.read_csv('output.csv')
+    #     print("IN1")
+    #     resultExcelFile = pd.ExcelWriter('output.xlsx')
+    #     print("IN2")
+    #     cvsDataframe.to_excel(resultExcelFile, index=False)
+    #     print("IN3")
 
     if fmt == 'JSON':
         with open("outputTemp.csv", 'r') as r, open('output.csv', 'w') as o:
