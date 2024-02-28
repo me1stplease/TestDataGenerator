@@ -1,5 +1,6 @@
 import csv
 import json
+import pandas as pd
 
 
 def export(fmt):
@@ -11,11 +12,13 @@ def export(fmt):
                     o.write(line)
 
     if fmt == 'EXCEL':
-        with open("outputTemp.csv", 'r') as r, open('output.xlsx', 'w') as o:
+        with open("outputTemp.csv", 'r') as r, open('output.csv', 'w') as o:
             for line in r:
                 # strip() function
                 if line.strip():
                     o.write(line)
+        read_file = pd.read_csv('output.csv')
+        read_file.to_excel('output.xlsx', index=None, header=True)
 
     if fmt == 'JSON':
         with open("outputTemp.csv", 'r') as r, open('output.csv', 'w') as o:
