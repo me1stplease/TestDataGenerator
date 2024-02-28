@@ -73,7 +73,6 @@ def SDUI():
             categorical_features = list(categorical_features)
 
             if trig:
-
                 if st.button("Generate Data", type="primary", key=100009):
                     ctgan = CTGAN(verbose=True)
                     ctgan.fit(data, categorical_features, epochs=200)

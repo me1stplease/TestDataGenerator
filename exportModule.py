@@ -17,8 +17,11 @@ def export(fmt):
                 # strip() function
                 if line.strip():
                     o.write(line)
-        read_file = pd.read_csv('output.csv')
-        read_file.to_excel('output.xlsx', index=None, header=True)
+
+        df_new = pd.read_csv('output.csv')
+        writer = pd.ExcelWriter('output.xlsx')
+        df_new.to_excel(writer, index=False)
+        writer.save()
 
     if fmt == 'JSON':
         with open("outputTemp.csv", 'r') as r, open('output.csv', 'w') as o:
