@@ -64,7 +64,7 @@ with tab1:
                 property4 = ''
 
             if datatype == "Email":
-                mprovider = st.text_input('Mail Providers: ', '@gmail.com, @yahoo.com, @hotmail.com')
+                mprovider = st.text_input('Mail Providers: ', 'gmail.com, yahoo.com, hotmail.com')
                 property1 = mprovider
                 property2 = ''
                 property3 = ''
