@@ -40,17 +40,22 @@ def Email(fake, records, domainList='gmail.com, yahoo.com, hotmail.com'):
     return email
 
 
-def Amount(records, minN=0, maxN=9999999):
+def Amount(records, minN=0, maxN=9999999, dec=0):
+
     amount = np.random.uniform(low=minN, high=maxN, size=(records,))
+    if not dec:
+        result = map(lambda x: round(x), amount)
+    else:
+        result = map(lambda x: round(x, dec), amount)
     # for _ in range(records):
     #     amount.append(np.random.uniform(low=minN, high=maxN, size=(records,)))
-    return amount
+    return list(result)
 
 
 def Text(fake, records, length=10):
     txt = []
     txtFormat = ''
-    print("IN:"+length)
+    print("IN:" + length)
     for _ in length:
         txtFormat += '?'
 

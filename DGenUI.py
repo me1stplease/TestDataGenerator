@@ -73,9 +73,12 @@ with tab1:
             if datatype == "Amount":
                 minV = st.text_input('Minimum Value: ', '0')
                 maxV = st.text_input('Maximum Value: ', '999999')
+                DecimalPoint = st.selectbox(
+                    'Decimal Point: ',
+                    ('0', '1', '2', '3', '4', '5', '6', '7'))
                 property1 = minV
                 property2 = maxV
-                property3 = ''
+                property3 = DecimalPoint
                 property4 = ''
 
             if datatype == "Text":
@@ -167,7 +170,7 @@ with tab1:
                     output_record.append(email)
 
                 if data[i][0] == "Amount":
-                    amount = amt(records, float(data[i][2]), float(data[i][3]))
+                    amount = amt(records, float(data[i][2]), float(data[i][3]), int(data[i][4]))
                     output_record.append(amount)
 
                 if data[i][0] == "Text":
