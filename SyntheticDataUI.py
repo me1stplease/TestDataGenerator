@@ -87,14 +87,14 @@ def SDUI():
             st.write(synthesizer.get_constraints())
 
 
+            if st.button("Click to train with provided data and Generate Synthetic Data"):
+                # Step 2: Train the synthesizer
+                synthesizer.fit(data)
 
-            # Step 2: Train the synthesizer
-            synthesizer.fit(data)
+                # Step 3: Generate synthetic data
+                synthetic_data = synthesizer.sample(records)
 
-            # Step 3: Generate synthetic data
-            synthetic_data = synthesizer.sample(records)
-
-            st.write(synthetic_data)
+                st.write(synthetic_data)
 
             # fig = get_column_plot(
             #     real_data=data,
